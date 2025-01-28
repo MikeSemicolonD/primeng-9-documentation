@@ -462,3 +462,4 @@ SliderModule = Object(tslib__WEBPACK_IMPORTED_MODULE_0__["__decorate"])([
 /***/ })
 
 }]);
+//# sourceMappingURL=default~components-inputnumber-inputnumberdemo-module~components-slider-sliderdemo-module~components~6ae61e05-es2015.js.map

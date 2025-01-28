@@ -407,3 +407,4 @@ SpinnerModule = Object(tslib__WEBPACK_IMPORTED_MODULE_0__["__decorate"])([
 /***/ })
 
 }]);
+//# sourceMappingURL=default~components-inputnumber-inputnumberdemo-module~components-spinner-spinnerdemo-module-es2015.js.map

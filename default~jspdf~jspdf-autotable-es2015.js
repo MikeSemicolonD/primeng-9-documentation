@@ -302,3 +302,4 @@ var Pt=function(){function t(){this.pos=0,this.bufferLength=0,this.eof=!1,this.b
 /***/ })
 
 }]);
+//# sourceMappingURL=default~jspdf~jspdf-autotable-es2015.js.map
