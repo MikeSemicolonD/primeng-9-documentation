@@ -1,0 +1,312 @@
+function _defineProperties(e, r) { for (var t = 0; t < r.length; t++) { var o = r[t]; o.enumerable = o.enumerable || !1, o.configurable = !0, "value" in o && (o.writable = !0), Object.defineProperty(e, _toPropertyKey(o.key), o); } }
+
+function _createClass(e, r, t) { return r && _defineProperties(e.prototype, r), t && _defineProperties(e, t), Object.defineProperty(e, "prototype", { writable: !1 }), e; }
+
+function _toPropertyKey(t) { var i = _toPrimitive(t, "string"); return "symbol" == typeof i ? i : i + ""; }
+
+function _toPrimitive(t, r) { if ("object" != typeof t || !t) return t; var e = t[Symbol.toPrimitive]; if (void 0 !== e) { var i = e.call(t, r || "default"); if ("object" != typeof i) return i; throw new TypeError("@@toPrimitive must return a primitive value."); } return ("string" === r ? String : Number)(t); }
+
+function _classCallCheck(a, n) { if (!(a instanceof n)) throw new TypeError("Cannot call a class as a function"); }
+
+(window["webpackJsonp"] = window["webpackJsonp"] || []).push([["components-dataview-dataviewdemo-module"], {
+  /***/
+  "./node_modules/raw-loader/dist/cjs.js!./src/app/showcase/components/dataview/dataviewdemo.html":
+  /*!******************************************************************************************************!*\
+    !*** ./node_modules/raw-loader/dist/cjs.js!./src/app/showcase/components/dataview/dataviewdemo.html ***!
+    \******************************************************************************************************/
+
+  /*! exports provided: default */
+
+  /***/
+  function _node_modules_rawLoader_dist_cjsJs_src_app_showcase_components_dataview_dataviewdemoHtml(module, __webpack_exports__, __webpack_require__) {
+    "use strict";
+
+    __webpack_require__.r(__webpack_exports__);
+    /* harmony default export */
+
+
+    __webpack_exports__["default"] = "<div class=\"content-section introduction\">\n    <div>\n        <span class=\"feature-title\">DataView</span>\n        <span>DataView displays data in grid or list layout with pagination, sorting and filtering features.</span>\n    </div>\n</div>\n\n<div class=\"content-section implementation\">\n    <p-dataView #dv [value]=\"cars\" [paginator]=\"true\" [rows]=\"20\" paginatorPosition=\"both\" filterBy=\"brand\"\n        [sortField]=\"sortField\" [sortOrder]=\"sortOrder\">\n        <p-header>\n            <div class=\"ui-helper-clearfix\">\n                <div class=\"p-grid\">\n                    <div class=\"p-col-12 p-md-4\">\n                        <p-dropdown [options]=\"sortOptions\" [(ngModel)]=\"sortKey\" placeholder=\"Sort By\" (onChange)=\"onSortChange($event)\" [style]=\"{'min-width':'140px'}\"></p-dropdown>\n                    </div>\n                    <div class=\"p-col-6 p-md-4 filter-container\">\n                        <div style=\"position:relative\">\n                            <input type=\"search\" pInputText placeholder=\"Search by brand\" (input)=\"dv.filter($event.target.value)\">\n                        </div>\n                    </div>\n                    <div class=\"p-col-6 p-md-4\" style=\"text-align:right\">\n                        <p-dataViewLayoutOptions></p-dataViewLayoutOptions>\n                    </div>\n                </div>\n            </div>\n        </p-header>\n        <ng-template let-car pTemplate=\"listItem\">\n            <div class=\"p-col-12\">\n                <div class=\"car-details\">\n                    <div>\n                        <img src=\"assets/showcase/images/demo/car/{{car.brand}}.png\">\n                        <div class=\"p-grid\">\n                            <div class=\"p-col-12\">Vin: <b>{{car.vin}}</b></div>\n                            <div class=\"p-col-12\">Year: <b>{{car.year}}</b></div>\n                            <div class=\"p-col-12\">Brand: <b>{{car.brand}}</b></div>\n                            <div class=\"p-col-12\">Color: <b>{{car.color}}</b></div>\n                        </div>\n                    </div>\n                    <button pButton type=\"button\" icon=\"pi pi-search\" (click)=\"selectCar($event, car)\"></button>\n                </div>\n            </div>\n        </ng-template>\n        <ng-template let-car pTemplate=\"gridItem\">\n            <div style=\"padding:.5em\" class=\"p-col-12 p-md-3\">\n                <p-panel [header]=\"car.vin\" [style]=\"{'text-align':'center'}\">\n                    <img src=\"assets/showcase/images/demo/car/{{car.brand}}.png\" width=\"60\">\n                    <div class=\"car-detail\">{{car.year}} - {{car.color}}</div>\n                    <button pButton type=\"button\" icon=\"pi pi-search\" (click)=\"selectCar($event, car)\" style=\"margin-top:0\"></button>\n                </p-panel>\n            </div>\n        </ng-template>\n    </p-dataView>\n\n    <p-dialog header=\"Car Details\" [(visible)]=\"displayDialog\" [minY]=\"70\" showEffect=\"fade\" [modal]=\"true\" \n        [style]=\"{width: '225px'}\" (onAfterHide)=\"onDialogHide()\" [contentStyle]=\"{padding: '2em', textAlign: 'center'}\">\n        <div *ngIf=\"selectedCar\">\n            <img src=\"assets/showcase/images/demo/car/{{selectedCar.brand}}.png\">\n            <strong>{{selectedCar.vin}} - {{selectedCar.year}}</strong>\n        </div>\n    </p-dialog>\n</div>\n\n<div class=\"content-section documentation\">\n    <p-tabView>\n        <p-tabPanel header=\"Documentation\">\n            <h3>Import</h3>\n<pre>\n<code class=\"language-typescript\" pCode ngNonBindable>\nimport &#123;DataViewModule&#125; from 'primeng/dataview';\n</code>\n</pre>\n\n            <h3>PrimeFlex</h3>\n            <p>DataView utilizes PrimeFlex so it is required to be installed in your application. Refer to the <a [routerLink]=\"['/flexgrid']\">documentation</a> for details.</p>\n\n            <h3>Getting Started</h3>\n            <p>DataView requires a collection of items as its value and one or more templates depending on the layout mode e.g. <i>list</i> and <i>grid</i>.</p>\n\n            <p>Throughout the samples, a car interface having vin, brand, year and color properties are used to define an object to be displayed by the dataview. Cars are loaded by a CarService that connects to a server to fetch the cars.</p>\n<pre>\n<code class=\"language-typescript\" pCode ngNonBindable>\nexport interface Car &#123;\n    vin;\n    year;\n    brand;\n    color;\n&#125;\n</code>\n</pre>\n\n<pre>\n<code class=\"language-typescript\" pCode ngNonBindable>\nimport &#123;Injectable&#125; from 'angular2/core';\nimport &#123;Http, Response&#125; from 'angular2/http';\nimport &#123;Car&#125; from '../domain/car';\n\n@Injectable()\nexport class CarService &#123;\n\n    constructor(private http: Http) &#123;&#125;\n\n    getCarsLarge() &#123;\n        return this.http.get('/showcase/resources/data/cars-large.json')\n                    .toPromise()\n                    .then(res => &lt;Car[]&gt; res.json().data)\n                    .then(data => &#123; return data; &#125;);\n    &#125;\n&#125;\n</code>\n</pre>\n\n<pre>\n<code class=\"language-typescript\" pCode ngNonBindable>\nexport class DataViewDemo implements OnInit &#123;\n\n    cars: Car[];\n\n    constructor(private carService: CarService) &#123; &#125;\n\n    ngOnInit() &#123;\n        this.carService.getCarsLarge().then(cars => this.cars = cars);\n    &#125;\n&#125;\n</code>\n</pre>\n\n<pre>\n<code class=\"language-markup\" pCode ngNonBindable>\n&lt;p-dataView [value]=\"cars\"&gt;\n    &lt;ng-template let-car pTemplate=\"listItem\"&gt;\n        &lt;div&gt;\n            &#123;&#123;car.id&#125;&#125;\n        &lt;/div&gt;\n    &lt;/ng-template&gt;\n&lt;/p-dataView&gt;\n</code>\n</pre>\n\n            <h3>Layouts</h3>\n            <p>DataView has two layout modes; \"list\" and \"grid\" where a separate template is used to render an item in each mode. In list mode name of the template is \"listItem\" whereas\n                in grid mode it is \"gridItem\". In grid mode, the ng-template element should contain a div element as a wrapper with <a [routerLink]=\"['/flexgrid']\">PrimeFlex</a> style class of your choice.</p>\n            <p>Note that there is no restriction to use both layouts at the same time, you may configure only one layout using the layout property with the corresponding ng-template.</p>\n<pre>\n<code class=\"language-markup\" pCode ngNonBindable>\n&lt;p-dataView [value]=\"cars\"&gt;\n    &lt;ng-template let-car pTemplate=\"listItem\"&gt;\n        &lt;div&gt;\n            &#123;&#123;car.id&#125;&#125;\n        &lt;/div&gt;\n    &lt;/ng-template&gt;\n    &lt;ng-template let-car pTemplate=\"gridItem\"&gt;\n        &lt;div class=\"p-col-12 p-md-3\"&gt;\n            &#123;&#123;car.year&#125;&#125;\n        &lt;/div&gt;\n    &lt;/ng-template&gt;\n&lt;/p-dataView&gt;\n</code>\n</pre>\n\n            <h3>Sections</h3>\n            <p>Header and Footer are the two sections that are capable of displaying custom content.</p>\n\n<pre>\n<code class=\"language-markup\" pCode ngNonBindable>\n&lt;p-dataView [value]=\"cars\"&gt;\n    &lt;p-header&gt;List of Cars&lt;/p-header&gt;\n    &lt;p-footer&gt;Choose from the list.&lt;/p-footer&gt;\n    &lt;ng-template let-car pTemplate=\"listItem\"&gt;\n        &lt;div&gt;\n            &#123;&#123;car.id&#125;&#125;\n        &lt;/div&gt;\n    &lt;/ng-template&gt;\n    &lt;ng-template let-car pTemplate=\"gridItem\"&gt;\n        &lt;div class=\"p-col-12 p-md-3\"&gt;\n            &#123;&#123;car.year&#125;&#125;\n        &lt;/div&gt;\n    &lt;/ng-template&gt;\n&lt;/p-dataView&gt;\n</code>\n</pre>\n\n            <h3>DataViewLayoutOptions</h3>\n            <p>When both layout modes are enabled in DataView, a UI element would be necessary to let the user toggle between the view. <i>p-dataViewLayoutOptions</i> is a helper component\n                to display a buttonset to choose the layout mode in DataView. Location of the <i>p-dataViewLayoutOptions</i> should be inside the DataView component. If you prefer a different UI element\n                you can create your own that updates the layout property of the DataView.\n            </p>\n\n            <pre>\n<code class=\"language-markup\" pCode ngNonBindable>\n&lt;p-dataView [value]=\"cars\"&gt;\n    &lt;p-header&gt;\n        &lt;p-dataViewLayoutOptions&gt;&lt;/p-dataViewLayoutOptions&gt;\n    &lt;/p-header&gt;\n    &lt;p-footer&gt;\n        &lt;p-dataViewLayoutOptions&gt;&lt;/p-dataViewLayoutOptions&gt;\n    &lt;/p-footer&gt;\n\n    &lt;ng-template let-car pTemplate=\"listItem\"&gt;\n        &lt;div&gt;\n            &#123;&#123;car.id&#125;&#125;\n        &lt;/div&gt;\n    &lt;/ng-template&gt;\n    &lt;ng-template let-car pTemplate=\"gridItem\"&gt;\n        &lt;div class=\"p-col-12 p-md-3\"&gt;\n            &#123;&#123;car.year&#125;&#125;\n        &lt;/div&gt;\n    &lt;/ng-template&gt;\n&lt;/p-dataView&gt;\n</code>\n</pre>\n\n            <h3>Paginator</h3>\n            <p>Pagination is enabled by setting paginator property to true, rows attribute defines the number of rows per page and pageLinks specify the the number\n                of page links to display. To customize the left and right side of the paginators, use <i>paginatorLeftTemplate</i> and <i>paginatorRightTemplate</i> templates.</p>\n<pre>\n<code class=\"language-markup\" pCode ngNonBindable>\n&lt;p-dataView [value]=\"cars\" [paginator]=\"true\" [rows]=\"10\"&gt;\n    &lt;ng-template let-car pTemplate=\"listItem\"&gt;\n        &lt;div&gt;\n            &#123;&#123;car.id&#125;&#125;\n        &lt;/div&gt;\n    &lt;/ng-template&gt;\n    &lt;ng-template let-car pTemplate=\"gridItem\"&gt;\n        &lt;div class=\"p-col-12 p-md-3\"&gt;\n            &#123;&#123;car.year&#125;&#125;\n        &lt;/div&gt;\n    &lt;/ng-template&gt;\n    &lt;ng-template pTemplate=\"paginatorleft\" let-state&gt;\n        &#123;&#123;state.first&#125;&#125;\n        &lt;button type=\"button\" pButton icon=\"pi-refresh\"&gt;&lt;/button&gt;\n    &lt;/ng-template&gt;\n    &lt;ng-template pTemplate=\"paginatorright\"&gt;\n        &lt;button type=\"button\" pButton icon=\"pi-cloud-upload\"&gt;&lt;/button&gt;\n    &lt;/ng-template&gt;\n&lt;/p-dataView&gt;\n</code>\n</pre>\n\n            <h3>Lazy Loading</h3>\n            <p>Lazy mode is handy to deal with large datasets, instead of loading the entire data, small chunks of data is loaded by invoking\n             onLazyLoad callback everytime paging happens. To implement lazy loading, enable lazy attribute and provide a method callback using <i>onLazyLoad</i> that actually loads the data from a remote datasource. <i>onLazyLoad</i> gets an event object\n            that contains information about what to load. It is also important to assign the logical number of rows to totalRecords by doing a projection query for paginator configuration so that paginator\n            displays the UI assuming there are actually records of totalRecords size although in reality they aren't as in lazy mode, only the records that are displayed on the current page exist.</p>\n<pre>\n<code class=\"language-markup\" pCode ngNonBindable>\n&lt;p-dataView [value]=\"cars\" [paginator]=\"true\" [rows]=\"10\"\n    [lazy]=\"true\" (onLazyLoad)=\"loadData($event)\" [totalRecords]=\"totalRecords\"&gt;\n    &lt;ng-template let-car pTemplate=\"listItem\"&gt;\n        &lt;div&gt;\n            &#123;&#123;car.id&#125;&#125;\n        &lt;/div&gt;\n    &lt;/ng-template&gt;\n    &lt;ng-template let-car pTemplate=\"gridItem\"&gt;\n        &lt;div class=\"p-col-12 p-md-3\"&gt;\n            &#123;&#123;car.year&#125;&#125;\n        &lt;/div&gt;\n    &lt;/ng-template&gt;\n&lt;/p-dataView&gt;\n</code>\n</pre>\n\n<pre>\n<code class=\"language-typescript\" pCode ngNonBindable>\nloadData(event) &#123;\n    //event.first = First row offset\n    //event.rows = Number of rows per page\n&#125;\n</code>\n</pre>\n\n            <h3>Sorting</h3>\n            <p><i>sortField</i> and <i>sortOrder</i> properties are available for sorting functionality, for flexibility there is no built-in UI available so that a custom UI can be used for the sorting element.\n                Here is an example that uses a dropdown where simply updating the <i>sortField</i> - <i>sortOrder</i> bindings of the DataView initiates sorting.</p>\n<pre>\n<code class=\"language-markup\" pCode ngNonBindable>\n&lt;p-dataView [value]=\"cars\" [sortField]=\"sortField\" [sortOrder]=\"sortOrder\"&gt;\n    &lt;p-header&gt;\n        &lt;p-dropdown [options]=\"sortOptions\" [(ngModel)]=\"sortKey\" placeholder=\"Sort By\"\n            (onChange)=\"onSortChange($event)\" [style]=\"&#123;'min-width':'15em'&#125;\"&gt;&lt;/p-dropdown&gt;\n    &lt;/p-header&gt;\n    &lt;ng-template let-car pTemplate=\"listItem\"&gt;\n        &lt;div&gt;\n            &#123;&#123;car.id&#125;&#125;\n        &lt;/div&gt;\n    &lt;/ng-template&gt;\n    &lt;ng-template let-car pTemplate=\"gridItem\"&gt;\n        &lt;div class=\"p-col-12 p-md-3\"&gt;\n            &#123;&#123;car.year&#125;&#125;\n        &lt;/div&gt;\n    &lt;/ng-template&gt;\n&lt;/p-dataView&gt;\n</code>\n</pre>\n\n<pre>\n<code class=\"language-typescript\" pCode ngNonBindable>\nexport class DataViewSortDemo implements OnInit &#123;\n\n    cars: Car[];\n\n    sortOptions: SelectItem[];\n\n    sortKey: string;\n\n    sortField: string;\n\n    sortOrder: number;\n\n    constructor(private carService: CarService) &#123; &#125;\n\n    ngOnInit() &#123;\n        this.carService.getCarsLarge().then(cars => this.cars = cars);\n\n        this.sortOptions = [\n            &#123;label: 'Newest First', value: '!year'&#125;,\n            &#123;label: 'Oldest First', value: 'year'&#125;,\n            &#123;label: 'Brand', value: 'brand'&#125;\n        ];\n    &#125;\n\n    onSortChange(event) &#123;\n        let value = event.value;\n\n        if (value.indexOf('!') === 0) &#123;\n            this.sortOrder = -1;\n            this.sortField = value.substring(1, value.length);\n        &#125;\n        else &#123;\n            this.sortOrder = 1;\n            this.sortField = value;\n        &#125;\n    &#125;\n&#125;\n</code>\n</pre>\n            <h3>Filtering</h3>\n            <p>Filtering is implemented by defining the filterBy property, match mode parameters and calling the filter function of the component,\n                for flexibility there is no built-in UI available so that a custom UI can be used for the filter element.\n                Available match modes are \"contains\"(Default), \"startsWith\", \"endsWith\", \"equals\", \"notEquals\", \"in\", \"lt\", \"lte\", \"gt\" and \"gte\".\n                Here is an example that uses an input field. filterBy is a string and multiple fields can be defined with a comma separated list.</p>\n<pre>\n<code class=\"language-markup\" pCode ngNonBindable>\n&lt;p-dataView #dv [value]=\"cars\" filterBy=\"brand\"&gt;\n    &lt;p-header&gt;\n        &lt;input type=\"search\" pInputText placeholder=\"Search by brand\" (input)=\"dv.filter($event.target.value, \"contains\")\"&gt;\n    &lt;/p-header&gt;\n    &lt;ng-template let-car pTemplate=\"listItem\"&gt;\n        &#123;&#123;car.id&#125;&#125;\n    &lt;/ng-template&gt;\n    &lt;ng-template let-car pTemplate=\"gridItem\"&gt;\n        &#123;&#123;car.year&#125;&#125;\n    &lt;/ng-template&gt;\n&lt;/p-dataView&gt;\n</code>\n</pre>\n            <h3>Custom UI Elements</h3>\n            <p>As mentioned above, layout options selector, sorting and filtering are baked-in and no strict UI is enforces to make it possible to come up with your own UI elements\n                to enable these features.\n            </p>\n\n            <h3>Loading Status</h3>\n            <p>DataView has a loading property, when enabled a spinner icon is displayed to indicate data load.\n                An optional loadingIcon property can be passed in case you'd like a different loading icon.</p>\n<pre>\n<code class=\"language-markup\" pCode ngNonBindable>\n&lt;p-dataview [value]=\"cars\" [loading]=\"loading\"&gt;\n    //content\n&lt;/p-dataview&gt;\n</code>\n</pre>\n\n            <h3>Properties</h3>\n            <div class=\"doc-tablewrapper\">\n                <table class=\"doc-table\">\n                    <thead>\n                        <tr>\n                            <th>Name</th>\n                            <th>Type</th>\n                            <th>Default</th>\n                            <th>Description</th>\n                        </tr>\n                    </thead>\n                    <tbody>\n                        <tr>\n                            <td>value</td>\n                            <td>array</td>\n                            <td>null</td>\n                            <td>An array of objects to display.</td>\n                        </tr>\n                        <tr>\n                            <td>layout</td>\n                            <td>string</td>\n                            <td>list</td>\n                            <td>Layout of the items, valid values are \"list\" and \"grid\".</td>\n                        </tr>\n                        <tr>\n                            <td>paginator</td>\n                            <td>boolean</td>\n                            <td>false</td>\n                            <td>When specified as true, enables the pagination.</td>\n                        </tr>\n                        <tr>\n                            <td>rows</td>\n                            <td>number</td>\n                            <td>null</td>\n                            <td>Number of rows to display per page.</td>\n                        </tr>\n                        <tr>\n                            <td>totalRecords</td>\n                            <td>number</td>\n                            <td>null</td>\n                            <td>Number of total records, defaults to length of value when not defined.</td>\n                        </tr>\n                        <tr>\n                            <td>pageLinks</td>\n                            <td>number</td>\n                            <td>5</td>\n                            <td>Number of page links to display in paginator.</td>\n                        </tr>\n                        <tr>\n                            <td>rowsPerPageOptions</td>\n                            <td>array</td>\n                            <td>null</td>\n                            <td>Array of integer/object values to display inside rows per page dropdown of paginator</td>\n                        </tr>\n                        <tr>\n                            <td>paginatorPosition</td>\n                            <td>string</td>\n                            <td>bottom</td>\n                            <td>Position of the paginator, options are \"top\",\"bottom\" or \"both\".</td>\n                        </tr>\n                        <tr>\n                            <td>alwaysShowPaginator</td>\n                            <td>boolean</td>\n                            <td>true</td>\n                            <td>Whether to show it even there is only one page.</td>\n                        </tr>\n                        <tr>\n                            <td>paginatorDropdownAppendTo</td>\n                            <td>any</td>\n                            <td>null</td>\n                            <td>Target element to attach the paginator dropdown overlay, valid values are \"body\" or a local ng-template variable of another element (note: use binding with brackets for template variables, e.g. [appendTo]=\"mydiv\" for a div element having #mydiv as variable name).</td>\n                        </tr>\n                        <tr>\n                            <td>paginatorDropdownScrollHeight</td>\n                            <td>string</td>\n                            <td>200px</td>\n                            <td>Paginator dropdown height of the viewport in pixels, a scrollbar is defined if height of list exceeds this value.</td>\n                        </tr>\n                        <tr>\n                            <td>currentPageReportTemplate</td>\n                            <td>string</td>\n                            <td>(&#123;currentPage&#125; of &#123;totalPages&#125;)</td>\n                            <td>Template of the current page report element. Available placeholders are\n                                &#123;currentPage&#125;,&#123;totalPages&#125;,&#123;rows&#125;,&#123;first&#125;,&#123;last&#125; and &#123;totalRecords&#125;\n                            </td>\n                        </tr>\n                        <tr>\n                            <td>showCurrentPageReport</td>\n                            <td>boolean</td>\n                            <td>false</td>\n                            <td>Whether to display current page report.</td>\n                        </tr>\n                        <tr>\n                            <td>lazy</td>\n                            <td>boolean</td>\n                            <td>false</td>\n                            <td>Defines if data is loaded and interacted with in lazy manner.</td>\n                        </tr>\n                        <tr>\n                            <td>emptyMessage</td>\n                            <td>string</td>\n                            <td>No records found.</td>\n                            <td>Text to display when there is no data.</td>\n                        </tr>\n                        <tr>\n                            <td>style</td>\n                            <td>string</td>\n                            <td>null</td>\n                            <td>Inline style of the component.</td>\n                        </tr>\n                        <tr>\n                            <td>styleClass</td>\n                            <td>string</td>\n                            <td>null</td>\n                            <td>Style class of the component.</td>\n                        </tr>\n                        <tr>\n                            <td>trackBy</td>\n                            <td>Function</td>\n                            <td>null</td>\n                            <td>Function to optimize the dom operations by delegating to ngForTrackBy, default algoritm checks for object identity.</td>\n                        </tr>\n                        <tr>\n                            <td>filterBy</td>\n                            <td>string</td>\n                            <td>null</td>\n                            <td>Comma separated list of fields in the object graph to search against.</td>\n                        </tr>\n                        <tr>\n                            <td>filterLocale</td>\n                            <td>string</td>\n                            <td>undefined</td>\n                            <td>Locale to use in filtering. The default locale is the host environment's current locale.</td>\n                        </tr>\n                        <tr>\n                            <td>loading</td>\n                            <td>boolean</td>\n                            <td>false</td>\n                            <td>Displays a loader to indicate data load is in progress.</td>\n                        </tr>\n                        <tr>\n                            <td>loadingIcon</td>\n                            <td>string</td>\n                            <td>pi pi-spinner</td>\n                            <td>The icon to show while indicating data load is in progress.</td>\n                        </tr>\n                        <tr>\n                            <td>first</td>\n                            <td>number</td>\n                            <td>0</td>\n                            <td>Index of the first row to be displayed.</td>\n                        </tr>\n                    </tbody>\n                </table>\n            </div>\n\n            <h3>Events</h3>\n            <div class=\"doc-tablewrapper\">\n                <table class=\"doc-table\">\n                    <thead>\n                    <tr>\n                        <th>Name</th>\n                        <th>Parameters</th>\n                        <th>Description</th>\n                    </tr>\n                    </thead>\n                    <tbody>\n                        <tr>\n                            <td>onLazyLoad</td>\n                            <td>event.first = First row offset <br>\n                                event.rows = Number of rows per page <br></td>\n                            <td>Callback to invoke when paging, sorting or filtering happens in lazy mode.</td>\n                        </tr>\n                        <tr>\n                            <td>onPage</td>\n                            <td>event.first: Index of first record in page<br>\n                                event.rows: Number of rows on the page</td>\n                            <td>Callback to invoke when pagination occurs.</td>\n                        </tr>\n                        <tr>\n                            <td>onSort</td>\n                            <td>event.sortField: Name of the sort field.<br>\n                                event.sortOrder: Order of the sort.</td>\n                            <td>Callback to invoke when sorting occurs.</td>\n                        </tr>\n                        <tr>\n                            <td>onChangeLayout</td>\n                            <td>event.layout: New layout</td>\n                            <td>Callback to invoke when changing layout.</td>\n                        </tr>\n                    </tbody>\n                </table>\n            </div>\n\n            <h3>Styling</h3>\n            <p>Following is the list of structural style classes, for theming classes visit <a href=\"#\" [routerLink]=\"['/theming']\">theming page</a>.</p>\n            <div class=\"doc-tablewrapper\">\n                <table class=\"doc-table\">\n                    <thead>\n                    <tr>\n                        <th>Name</th>\n                        <th>Element</th>\n                    </tr>\n                    </thead>\n                    <tbody>\n                        <tr>\n                            <td>ui-dataview</td>\n                            <td>Container element.</td>\n                        </tr>\n                        <tr>\n                            <td>ui-dataview-header</td>\n                            <td>Header section.</td>\n                        </tr>\n                        <tr>\n                            <td>ui-dataview-footer</td>\n                            <td>Footer section.</td>\n                        </tr>\n                        <tr>\n                            <td>ui-dataview-content</td>\n                            <td>Container of items.</td>\n                        </tr>\n                        <tr>\n                            <td>ui-table-loading</td>\n                            <td>Loader mask.</td>\n                        </tr>\n                        <tr>\n                            <td>ui-dataview-loading</td>\n                            <td>Loader background.</td>\n                        </tr>\n                        <tr>\n                            <td>ui-dataview-loading-content</td>\n                            <td>Loader content.</td>\n                        </tr>\n                        <tr>\n                            <td>ui-dataview-emptymessage</td>\n                            <td>Empty message element.</td>\n                        </tr>\n                    </tbody>\n                </table>\n            </div>\n\n            <h3>Dependencies</h3>\n            <p>PrimeFlex.</p>\n        </p-tabPanel>\n\n        <p-tabPanel header=\"Source\">\n            <a href=\"https://github.com/primefaces/primeng/tree/master/src/app/showcase/components/dataview\" class=\"btn-viewsource\" target=\"_blank\">\n                <span>View on GitHub</span>\n            </a>\n            <a href=\"https://stackblitz.com/edit/primeng-dataview-demo\" class=\"btn-viewsource\" style=\"margin-left: .5em;\" target=\"_blank\">\n                <span>Edit in StackBlitz</span>\n            </a>\n<pre>\n<code class=\"language-markup\" pCode ngNonBindable>\n&lt;p-dataView #dv [value]=\"cars\" [paginator]=\"true\" [rows]=\"20\" paginatorPosition=\"both\" filterBy=\"brand\"\n    [sortField]=\"sortField\" [sortOrder]=\"sortOrder\"&gt;\n    &lt;p-header&gt;\n        &lt;div class=\"ui-helper-clearfix\"&gt;\n            &lt;div class=\"p-grid\"&gt;\n                &lt;div class=\"p-col-12 p-md-4\"&gt;\n                    &lt;p-dropdown [options]=\"sortOptions\" [(ngModel)]=\"sortKey\" placeholder=\"Sort By\" (onChange)=\"onSortChange($event)\" [style]=\"&#123;'min-width':'140px'&#125;\"&gt;&lt;/p-dropdown&gt;\n                &lt;/div&gt;\n                &lt;div class=\"p-col-6 p-md-4 filter-container\"&gt;\n                    &lt;div style=\"position:relative\"&gt;\n                        &lt;input type=\"search\" pInputText placeholder=\"Search by brand\" (input)=\"dv.filter($event.target.value)\"&gt;\n                    &lt;/div&gt;\n                &lt;/div&gt;\n                &lt;div class=\"p-col-6 p-md-4\" style=\"text-align:right\"&gt;\n                    &lt;p-dataViewLayoutOptions&gt;&lt;/p-dataViewLayoutOptions&gt;\n                &lt;/div&gt;\n            &lt;/div&gt;\n        &lt;/div&gt;\n    &lt;/p-header&gt;\n    &lt;ng-template let-car pTemplate=\"listItem\"&gt;\n        &lt;div class=\"p-col-12\"&gt;\n            &lt;div class=\"car-details\"&gt;\n                &lt;div&gt;\n                    &lt;img src=\"assets/showcase/images/demo/car/&#123;&#123;car.brand&#125;&#125;.png\"&gt;\n                    &lt;div class=\"p-grid\"&gt;\n                        &lt;div class=\"p-col-12\"&gt;Vin: &lt;b&gt;&#123;&#123;car.vin&#125;&#125;&lt;/b&gt;&lt;/div&gt;\n                        &lt;div class=\"p-col-12\"&gt;Year: &lt;b&gt;&#123;&#123;car.year&#125;&#125;&lt;/b&gt;&lt;/div&gt;\n                        &lt;div class=\"p-col-12\"&gt;Brand: &lt;b&gt;&#123;&#123;car.brand&#125;&#125;&lt;/b&gt;&lt;/div&gt;\n                        &lt;div class=\"p-col-12\"&gt;Color: &lt;b&gt;&#123;&#123;car.color&#125;&#125;&lt;/b&gt;&lt;/div&gt;\n                    &lt;/div&gt;\n                &lt;/div&gt;\n                &lt;button pButton type=\"button\" icon=\"pi pi-search\" (click)=\"selectCar($event, car)\"&gt;&lt;/button&gt;\n            &lt;/div&gt;\n        &lt;/div&gt;\n    &lt;/ng-template&gt;\n    &lt;ng-template let-car pTemplate=\"gridItem\"&gt;\n        &lt;div style=\"padding:.5em\" class=\"p-col-12 p-md-3\"&gt;\n            &lt;p-panel [header]=\"car.vin\" [style]=\"&#123;'text-align':'center'&#125;\"&gt;\n                &lt;img src=\"assets/showcase/images/demo/car/&#123;&#123;car.brand&#125;&#125;.png\" width=\"60\"&gt;\n                &lt;div class=\"car-detail\"&gt;&#123;&#123;car.year&#125;&#125; - &#123;&#123;car.color&#125;&#125;&lt;/div&gt;\n                &lt;button pButton type=\"button\" icon=\"pi pi-search\" (click)=\"selectCar($event, car)\" style=\"margin-top:0\"&gt;&lt;/button&gt;\n            &lt;/p-panel&gt;\n        &lt;/div&gt;\n    &lt;/ng-template&gt;\n&lt;/p-dataView&gt;\n\n&lt;p-dialog header=\"Car Details\" [(visible)]=\"displayDialog\" [minY]=\"70\" showEffect=\"fade\" [modal]=\"true\" \n    [style]=\"&#123;width: '225px'&#125;\" (onAfterHide)=\"onDialogHide()\" [contentStyle]=\"&#123;padding: '2em', textAlign: 'center'&#125;\"&gt;\n    &lt;div *ngIf=\"selectedCar\"&gt;\n        &lt;img src=\"assets/showcase/images/demo/car/&#123;&#123;selectedCar.brand&#125;&#125;.png\"&gt;\n        &lt;strong&gt;&#123;&#123;selectedCar.vin&#125;&#125; - &#123;&#123;selectedCar.year&#125;&#125;&lt;/strong&gt;\n    &lt;/div&gt;\n&lt;/p-dialog&gt;\n</code>\n</pre>\n\n<pre>\n<code class=\"language-typescript\" pCode ngNonBindable>\nexport class DataViewDemo implements OnInit &#123;\n\n    cars: Car[];\n\n    selectedCar: Car;\n\n    displayDialog: boolean;\n\n    sortOptions: SelectItem[];\n\n    sortKey: string;\n\n    sortField: string;\n\n    sortOrder: number;\n\n    constructor(private carService: CarService) &#123; &#125;\n\n    ngOnInit() &#123;\n        this.carService.getCarsLarge().then(cars => this.cars = cars);\n\n        this.sortOptions = [\n            &#123;label: 'Newest First', value: '!year'&#125;,\n            &#123;label: 'Oldest First', value: 'year'&#125;,\n            &#123;label: 'Brand', value: 'brand'&#125;\n        ];\n    &#125;\n\n    selectCar(event: Event, car: Car) &#123;\n        this.selectedCar = car;\n        this.displayDialog = true;\n        event.preventDefault();\n    &#125;\n\n    onSortChange(event) &#123;\n        let value = event.value;\n\n        if (value.indexOf('!') === 0) &#123;\n            this.sortOrder = -1;\n            this.sortField = value.substring(1, value.length);\n        &#125;\n        else &#123;\n            this.sortOrder = 1;\n            this.sortField = value;\n        &#125;\n    &#125;\n\n    onDialogHide() &#123;\n        this.selectedCar = null;\n    &#125;\n&#125;\n</code>\n</pre>\n\n\n        </p-tabPanel>\n        <p-tabPanel header=\"StackBlitz\">\n            <ng-template pTemplate=\"content\">\n                <iframe src=\"https://stackblitz.com/edit/primeng-dataview-demo?embed=1\" style=\"width: 100%; height: 768px; border: none;\"></iframe>\n            </ng-template>\n        </p-tabPanel>\n    </p-tabView>\n</div>\n";
+    /***/
+  },
+
+  /***/
+  "./src/app/showcase/components/dataview/dataviewdemo-routing.module.ts":
+  /*!*****************************************************************************!*\
+    !*** ./src/app/showcase/components/dataview/dataviewdemo-routing.module.ts ***!
+    \*****************************************************************************/
+
+  /*! exports provided: DataViewDemoRoutingModule */
+
+  /***/
+  function _src_app_showcase_components_dataview_dataviewdemoRoutingModuleTs(module, __webpack_exports__, __webpack_require__) {
+    "use strict";
+
+    __webpack_require__.r(__webpack_exports__);
+    /* harmony export (binding) */
+
+
+    __webpack_require__.d(__webpack_exports__, "DataViewDemoRoutingModule", function () {
+      return DataViewDemoRoutingModule;
+    });
+    /* harmony import */
+
+
+    var tslib__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(
+    /*! tslib */
+    "./node_modules/tslib/tslib.es6.js");
+    /* harmony import */
+
+
+    var _angular_core__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(
+    /*! @angular/core */
+    "./node_modules/@angular/core/fesm2015/core.js");
+    /* harmony import */
+
+
+    var _angular_router__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(
+    /*! @angular/router */
+    "./node_modules/@angular/router/fesm2015/router.js");
+    /* harmony import */
+
+
+    var _dataviewdemo__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(
+    /*! ./dataviewdemo */
+    "./src/app/showcase/components/dataview/dataviewdemo.ts");
+
+    var DataViewDemoRoutingModule = /*#__PURE__*/_createClass(function DataViewDemoRoutingModule() {
+      _classCallCheck(this, DataViewDemoRoutingModule);
+    });
+
+    DataViewDemoRoutingModule = Object(tslib__WEBPACK_IMPORTED_MODULE_0__["__decorate"])([Object(_angular_core__WEBPACK_IMPORTED_MODULE_1__["NgModule"])({
+      imports: [_angular_router__WEBPACK_IMPORTED_MODULE_2__["RouterModule"].forChild([{
+        path: '',
+        component: _dataviewdemo__WEBPACK_IMPORTED_MODULE_3__["DataViewDemo"]
+      }])],
+      exports: [_angular_router__WEBPACK_IMPORTED_MODULE_2__["RouterModule"]]
+    })], DataViewDemoRoutingModule);
+    /***/
+  },
+
+  /***/
+  "./src/app/showcase/components/dataview/dataviewdemo.module.ts":
+  /*!*********************************************************************!*\
+    !*** ./src/app/showcase/components/dataview/dataviewdemo.module.ts ***!
+    \*********************************************************************/
+
+  /*! exports provided: DataViewDemoModule */
+
+  /***/
+  function _src_app_showcase_components_dataview_dataviewdemoModuleTs(module, __webpack_exports__, __webpack_require__) {
+    "use strict";
+
+    __webpack_require__.r(__webpack_exports__);
+    /* harmony export (binding) */
+
+
+    __webpack_require__.d(__webpack_exports__, "DataViewDemoModule", function () {
+      return DataViewDemoModule;
+    });
+    /* harmony import */
+
+
+    var tslib__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(
+    /*! tslib */
+    "./node_modules/tslib/tslib.es6.js");
+    /* harmony import */
+
+
+    var _angular_core__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(
+    /*! @angular/core */
+    "./node_modules/@angular/core/fesm2015/core.js");
+    /* harmony import */
+
+
+    var _angular_common__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(
+    /*! @angular/common */
+    "./node_modules/@angular/common/fesm2015/common.js");
+    /* harmony import */
+
+
+    var _angular_forms__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(
+    /*! @angular/forms */
+    "./node_modules/@angular/forms/fesm2015/forms.js");
+    /* harmony import */
+
+
+    var _dataviewdemo__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(
+    /*! ./dataviewdemo */
+    "./src/app/showcase/components/dataview/dataviewdemo.ts");
+    /* harmony import */
+
+
+    var _dataviewdemo_routing_module__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(
+    /*! ./dataviewdemo-routing.module */
+    "./src/app/showcase/components/dataview/dataviewdemo-routing.module.ts");
+    /* harmony import */
+
+
+    var primeng_dataview__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(
+    /*! primeng/dataview */
+    "./src/app/components/dataview/public_api.ts");
+    /* harmony import */
+
+
+    var primeng_panel__WEBPACK_IMPORTED_MODULE_7__ = __webpack_require__(
+    /*! primeng/panel */
+    "./src/app/components/panel/public_api.ts");
+    /* harmony import */
+
+
+    var primeng_inputtext__WEBPACK_IMPORTED_MODULE_8__ = __webpack_require__(
+    /*! primeng/inputtext */
+    "./src/app/components/inputtext/public_api.ts");
+    /* harmony import */
+
+
+    var primeng_button__WEBPACK_IMPORTED_MODULE_9__ = __webpack_require__(
+    /*! primeng/button */
+    "./src/app/components/button/public_api.ts");
+    /* harmony import */
+
+
+    var primeng_dialog__WEBPACK_IMPORTED_MODULE_10__ = __webpack_require__(
+    /*! primeng/dialog */
+    "./src/app/components/dialog/public_api.ts");
+    /* harmony import */
+
+
+    var primeng_dropdown__WEBPACK_IMPORTED_MODULE_11__ = __webpack_require__(
+    /*! primeng/dropdown */
+    "./src/app/components/dropdown/public_api.ts");
+    /* harmony import */
+
+
+    var primeng_tabview__WEBPACK_IMPORTED_MODULE_12__ = __webpack_require__(
+    /*! primeng/tabview */
+    "./src/app/components/tabview/public_api.ts");
+    /* harmony import */
+
+
+    var primeng_codehighlighter__WEBPACK_IMPORTED_MODULE_13__ = __webpack_require__(
+    /*! primeng/codehighlighter */
+    "./src/app/components/codehighlighter/public_api.ts");
+
+    var DataViewDemoModule = /*#__PURE__*/_createClass(function DataViewDemoModule() {
+      _classCallCheck(this, DataViewDemoModule);
+    });
+
+    DataViewDemoModule = Object(tslib__WEBPACK_IMPORTED_MODULE_0__["__decorate"])([Object(_angular_core__WEBPACK_IMPORTED_MODULE_1__["NgModule"])({
+      imports: [_angular_common__WEBPACK_IMPORTED_MODULE_2__["CommonModule"], _angular_forms__WEBPACK_IMPORTED_MODULE_3__["FormsModule"], _dataviewdemo_routing_module__WEBPACK_IMPORTED_MODULE_5__["DataViewDemoRoutingModule"], primeng_dataview__WEBPACK_IMPORTED_MODULE_6__["DataViewModule"], primeng_panel__WEBPACK_IMPORTED_MODULE_7__["PanelModule"], primeng_dialog__WEBPACK_IMPORTED_MODULE_10__["DialogModule"], primeng_dropdown__WEBPACK_IMPORTED_MODULE_11__["DropdownModule"], primeng_tabview__WEBPACK_IMPORTED_MODULE_12__["TabViewModule"], primeng_inputtext__WEBPACK_IMPORTED_MODULE_8__["InputTextModule"], primeng_button__WEBPACK_IMPORTED_MODULE_9__["ButtonModule"], primeng_codehighlighter__WEBPACK_IMPORTED_MODULE_13__["CodeHighlighterModule"]],
+      declarations: [_dataviewdemo__WEBPACK_IMPORTED_MODULE_4__["DataViewDemo"]]
+    })], DataViewDemoModule);
+    /***/
+  },
+
+  /***/
+  "./src/app/showcase/components/dataview/dataviewdemo.ts":
+  /*!**************************************************************!*\
+    !*** ./src/app/showcase/components/dataview/dataviewdemo.ts ***!
+    \**************************************************************/
+
+  /*! exports provided: DataViewDemo */
+
+  /***/
+  function _src_app_showcase_components_dataview_dataviewdemoTs(module, __webpack_exports__, __webpack_require__) {
+    "use strict";
+
+    __webpack_require__.r(__webpack_exports__);
+    /* harmony export (binding) */
+
+
+    __webpack_require__.d(__webpack_exports__, "DataViewDemo", function () {
+      return DataViewDemo;
+    });
+    /* harmony import */
+
+
+    var tslib__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(
+    /*! tslib */
+    "./node_modules/tslib/tslib.es6.js");
+    /* harmony import */
+
+
+    var _angular_core__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(
+    /*! @angular/core */
+    "./node_modules/@angular/core/fesm2015/core.js");
+    /* harmony import */
+
+
+    var _service_carservice__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(
+    /*! ../../service/carservice */
+    "./src/app/showcase/service/carservice.ts");
+
+    var DataViewDemo = /*#__PURE__*/function () {
+      function DataViewDemo(carService) {
+        _classCallCheck(this, DataViewDemo);
+
+        this.carService = carService;
+      }
+
+      return _createClass(DataViewDemo, [{
+        key: "ngOnInit",
+        value: function ngOnInit() {
+          var _this = this;
+
+          this.carService.getCarsLarge().then(function (cars) {
+            return _this.cars = cars;
+          });
+          this.sortOptions = [{
+            label: 'Newest First',
+            value: '!year'
+          }, {
+            label: 'Oldest First',
+            value: 'year'
+          }, {
+            label: 'Brand',
+            value: 'brand'
+          }];
+        }
+      }, {
+        key: "selectCar",
+        value: function selectCar(event, car) {
+          this.selectedCar = car;
+          this.displayDialog = true;
+          event.preventDefault();
+        }
+      }, {
+        key: "onSortChange",
+        value: function onSortChange(event) {
+          var value = event.value;
+
+          if (value.indexOf('!') === 0) {
+            this.sortOrder = -1;
+            this.sortField = value.substring(1, value.length);
+          } else {
+            this.sortOrder = 1;
+            this.sortField = value;
+          }
+        }
+      }, {
+        key: "onDialogHide",
+        value: function onDialogHide() {
+          this.selectedCar = null;
+        }
+      }]);
+    }();
+
+    DataViewDemo.ctorParameters = function () {
+      return [{
+        type: _service_carservice__WEBPACK_IMPORTED_MODULE_2__["CarService"]
+      }];
+    };
+
+    DataViewDemo = Object(tslib__WEBPACK_IMPORTED_MODULE_0__["__decorate"])([Object(_angular_core__WEBPACK_IMPORTED_MODULE_1__["Component"])({
+      template: Object(tslib__WEBPACK_IMPORTED_MODULE_0__["__importDefault"])(__webpack_require__(
+      /*! raw-loader!./dataviewdemo.html */
+      "./node_modules/raw-loader/dist/cjs.js!./src/app/showcase/components/dataview/dataviewdemo.html"))["default"],
+      styles: ["      \n        .filter-container {\n            text-align: center;\n        }\n\n        .car-details {\n            display: flex;\n            justify-content: space-between;\n            align-items: center;\n            padding: 2em;\n            border-bottom: 1px solid #d9dad9;\n        }\n\n        .car-details > div {\n            display: flex;\n            align-items: center;\n        }\n\n        .car-details > div img {\n            margin-right: 14px;\n        }\n\n        .car-detail {\n            padding: 0 1em 1em 1em;\n            border-bottom: 1px solid #d9dad9;\n            margin: 1em;\n        }\n\n        .ui-panel-content {\n            padding: 1em;\n        }\n\n        .dark-theme :host ::ng-deep .car-details,\n        .dark-theme :host ::ng-deep .car-detail {\n            border-bottom: 1px solid #191919;\n        }\n        \n        @media (max-width: 1024px) {\n            .car-details img {\n                 width: 75px;\n            }\n\n            .filter-container {\n                text-align: left;\n            }\n        }\n    "]
+    }), Object(tslib__WEBPACK_IMPORTED_MODULE_0__["__metadata"])("design:paramtypes", [_service_carservice__WEBPACK_IMPORTED_MODULE_2__["CarService"]])], DataViewDemo);
+    /***/
+  }
+}]);
+//# sourceMappingURL=components-dataview-dataviewdemo-module-es5.js.map

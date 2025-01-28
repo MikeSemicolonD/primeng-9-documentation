@@ -1,0 +1,292 @@
+function _createForOfIteratorHelper(r, e) { var t = "undefined" != typeof Symbol && r[Symbol.iterator] || r["@@iterator"]; if (!t) { if (Array.isArray(r) || (t = _unsupportedIterableToArray(r)) || e && r && "number" == typeof r.length) { t && (r = t); var _n = 0, F = function F() {}; return { s: F, n: function n() { return _n >= r.length ? { done: !0 } : { done: !1, value: r[_n++] }; }, e: function e(r) { throw r; }, f: F }; } throw new TypeError("Invalid attempt to iterate non-iterable instance.\nIn order to be iterable, non-array objects must have a [Symbol.iterator]() method."); } var o, a = !0, u = !1; return { s: function s() { t = t.call(r); }, n: function n() { var r = t.next(); return a = r.done, r; }, e: function e(r) { u = !0, o = r; }, f: function f() { try { a || null == t["return"] || t["return"](); } finally { if (u) throw o; } } }; }
+
+function _unsupportedIterableToArray(r, a) { if (r) { if ("string" == typeof r) return _arrayLikeToArray(r, a); var t = {}.toString.call(r).slice(8, -1); return "Object" === t && r.constructor && (t = r.constructor.name), "Map" === t || "Set" === t ? Array.from(r) : "Arguments" === t || /^(?:Ui|I)nt(?:8|16|32)(?:Clamped)?Array$/.test(t) ? _arrayLikeToArray(r, a) : void 0; } }
+
+function _arrayLikeToArray(r, a) { (null == a || a > r.length) && (a = r.length); for (var e = 0, n = Array(a); e < a; e++) n[e] = r[e]; return n; }
+
+function _defineProperties(e, r) { for (var t = 0; t < r.length; t++) { var o = r[t]; o.enumerable = o.enumerable || !1, o.configurable = !0, "value" in o && (o.writable = !0), Object.defineProperty(e, _toPropertyKey(o.key), o); } }
+
+function _createClass(e, r, t) { return r && _defineProperties(e.prototype, r), t && _defineProperties(e, t), Object.defineProperty(e, "prototype", { writable: !1 }), e; }
+
+function _toPropertyKey(t) { var i = _toPrimitive(t, "string"); return "symbol" == typeof i ? i : i + ""; }
+
+function _toPrimitive(t, r) { if ("object" != typeof t || !t) return t; var e = t[Symbol.toPrimitive]; if (void 0 !== e) { var i = e.call(t, r || "default"); if ("object" != typeof i) return i; throw new TypeError("@@toPrimitive must return a primitive value."); } return ("string" === r ? String : Number)(t); }
+
+function _classCallCheck(a, n) { if (!(a instanceof n)) throw new TypeError("Cannot call a class as a function"); }
+
+(window["webpackJsonp"] = window["webpackJsonp"] || []).push([["components-fileupload-fileuploaddemo-module"], {
+  /***/
+  "./node_modules/raw-loader/dist/cjs.js!./src/app/showcase/components/fileupload/fileuploaddemo.html":
+  /*!**********************************************************************************************************!*\
+    !*** ./node_modules/raw-loader/dist/cjs.js!./src/app/showcase/components/fileupload/fileuploaddemo.html ***!
+    \**********************************************************************************************************/
+
+  /*! exports provided: default */
+
+  /***/
+  function _node_modules_rawLoader_dist_cjsJs_src_app_showcase_components_fileupload_fileuploaddemoHtml(module, __webpack_exports__, __webpack_require__) {
+    "use strict";
+
+    __webpack_require__.r(__webpack_exports__);
+    /* harmony default export */
+
+
+    __webpack_exports__["default"] = "<div class=\"content-section introduction\">\n    <div>\n        <span class=\"feature-title\">FileUpload</span>\n        <span>FileUpload is an advanced uploader with drag and drop support, multi file uploads, auto uploading, progress tracking and\n            validations.</span>\n    </div>\n</div>\n\n<div class=\"content-section implementation\">\n    <p-toast></p-toast>\n\n    <h3 class=\"first\">Advanced</h3>\n    <p-fileUpload name=\"demo[]\" url=\"./upload.php\" (onUpload)=\"onUpload($event)\"\n            multiple=\"multiple\" accept=\"image/*\" maxFileSize=\"1000000\">\n            <ng-template pTemplate=\"content\">\n                <ul *ngIf=\"uploadedFiles.length\">\n                    <li *ngFor=\"let file of uploadedFiles\">{{file.name}} - {{file.size}} bytes</li>\n                </ul>\n            </ng-template>\n    </p-fileUpload>\n\n    <h3>Basic</h3>\n    <p-fileUpload mode=\"basic\" name=\"demo[]\" url=\"./upload.php\" accept=\"image/*\" maxFileSize=\"1000000\" (onUpload)=\"onBasicUpload($event)\"></p-fileUpload>\n\n    <h3>Basic with Auto</h3>\n    <p-fileUpload #fubauto mode=\"basic\" name=\"demo[]\" url=\"./upload.php\" accept=\"image/*\" maxFileSize=\"1000000\" (onUpload)=\"onBasicUploadAuto($event)\" [auto]=\"true\" chooseLabel=\"Browse\"></p-fileUpload>\n</div>\n\n<div class=\"content-section documentation\">\n    <p-tabView>\n        <p-tabPanel header=\"Documentation\">\n            <h3>Import</h3>\n<pre>\n<code class=\"language-typescript\" pCode ngNonBindable>\nimport &#123;FileUploadModule&#125; from 'primeng/fileupload';\n</code>\n</pre>\n\n            <h3>Getting Started</h3>\n            <p>FileUpload requires a <i>url</i> property as the upload target and a <i>name</i> to identify the files at backend.</p>\n<pre>\n<code class=\"language-markup\" pCode ngNonBindable>\n&lt;p-fileUpload name=\"myfile[]\" url=\"./upload.php\"&gt;&lt;/p-fileUpload&gt;\n</code>\n</pre>\n\n            <h3>Multiple Uploads</h3>\n            <p>Only one file can be selected at a time, to allow selecting multiples enable <i>multiple</i> option.</p>\n<pre>\n<code class=\"language-markup\" pCode ngNonBindable>\n&lt;p-fileUpload name=\"myfile[]\" url=\"./upload.php\" multiple=\"multiple\"&gt;&lt;/p-fileUpload&gt;\n</code>\n</pre>\n\n            <h3>DragDrop</h3>\n            <p>File selection can also be done by dragging and dropping one or more files to the content section of the component.</p>\n\n            <h3>Auto Uploads</h3>\n            <p>When auto property is enabled, upload begins as soon as file selection is completed or a file is dropped on the drop area.</p>\n<pre>\n<code class=\"language-markup\" pCode ngNonBindable>\n&lt;p-fileUpload name=\"myfile[]\" url=\"./upload.php\" multiple=\"multiple\"\n        accept=\"image/*\" [auto]=\"true\"&gt;&lt;/p-fileUpload&gt;\n</code>\n</pre>\n\n            <h3>File Types</h3>\n            <p>Selectable file types can be restricted with <i>accept</i> property, example below only allows images to be uploaded.\n            Read more about other possible values <a href=\"http://www.w3schools.com/tags/att_input_accept.asp\">here</a>.</p>\n<pre>\n<code class=\"language-markup\" pCode ngNonBindable>\n&lt;p-fileUpload name=\"myfile[]\" url=\"./upload.php\" multiple=\"multiple\"\n        accept=\"image/*\"&gt;&lt;/p-fileUpload&gt;\n</code>\n</pre>\n\n            <h3>File Size</h3>\n            <p>Maximum file size can be restricted using <i>maxFileSize</i> property defined in bytes.</p>\n<pre>\n<code class=\"language-markup\" pCode ngNonBindable>\n&lt;p-fileUpload name=\"myfile[]\" url=\"./upload.php\" multiple=\"multiple\"\n        accept=\"image/*\" maxFileSize=\"1000000\"&gt;&lt;/p-fileUpload&gt;\n</code>\n</pre>\n\n            <p>In order to customize the default messages use <i>invalidFileSizeMessageSummary</i> and <i>invalidFileSizeMessageDetail</i> options.\n            In summary &#123;0&#125; placeholder refers to the filename and in detail, file size.</p>\n            <ul>\n                <li>invalidFileSizeMessageSummary: '&#123;0&#125;: Invalid file size, '</li>\n                <li>invalidFileSizeMessageDetail: string = 'maximum upload size is &#123;0&#125;.'</li>\n            </ul>\n\n            <h3>Templating</h3>\n            <p>File list UI is customizable using a ng-template called \"file\" that gets the <a href=\"https://www.w3.org/TR/FileAPI/\">File</a> instance as the implicit variable.\n                Second ng-template named \"content\" can be used to place custom content inside the content section which would be useful to implement a user interface to manage the uploaded files such as removing them.\n                Third and final ng-template option is \"toolbar\" to display custom content at toolbar.</p>\n<pre>\n<code class=\"language-markup\" pCode ngNonBindable>\n&lt;p-fileUpload name=\"myfile[]\" url=\"./upload.php\" multiple=\"multiple\"\n        accept=\"image/*\" maxFileSize=\"1000000\"&gt;\n        &lt;ng-template pTemplate=\"toolbar\"&gt;\n            &lt;div&gt;Upload 3 Files&lt;/div&gt;\n        &lt;/ng-template&gt;\n        &lt;ng-template let-file pTemplate=\"file\"&gt;\n            &lt;div&gt;Custom UI to display a file&lt;/div&gt;\n        &lt;/ng-template&gt;\n        &lt;ng-template pTemplate=\"content\"&gt;\n            &lt;div&gt;Custom UI to manage uploaded files&lt;/div&gt;\n        &lt;/ng-template&gt;\n&lt;/p-fileUpload&gt;\n</code>\n</pre>\n\n            <h3>Request Customization</h3>\n            <p>Internally, FileUpload uses Angular's HttpClient module so you may take advantage of the built-in features such interceptors and header customization.</p>\n\n            <h3>Basic UI</h3>\n            <p>FileUpload basic mode provides a simpler UI as an alternative to advanced mode.</p>\n<pre>\n<code class=\"language-markup\" pCode ngNonBindable>\n&lt;p-fileUpload mode=\"basic\" name=\"demo[]\" url=\"./upload.php\" accept=\"image/*\" maxFileSize=\"1000000\" (onUpload)=\"onBasicUpload($event)\" [auto]=\"true\"&gt;&lt;/p-fileUpload&gt;\n</code>\n</pre>\n            <h3>Custom Upload</h3>\n            <p>Uploading implementation can be overridden by enabling customMode property and defining a custom upload handler event.</p>\n<pre>\n<code class=\"language-markup\" pCode ngNonBindable>\n&lt;p-fileUpload name=\"myfile[]\" customUpload=\"true\" (uploadHandler)=\"myUploader($event)\"&gt;&lt;/p-fileUpload&gt;\n</code>\n</pre>\n\n<pre>\n<code class=\"language-typescript\" pCode ngNonBindable>\nmyUploader(event) &#123;\n    //event.files == files to upload\n&#125;\n</code>\n</pre>\n\n            <h3>Properties</h3>\n            <div class=\"doc-tablewrapper\">\n                <table class=\"doc-table\">\n                    <thead>\n                        <tr>\n                            <th>Name</th>\n                            <th>Type</th>\n                            <th>Default</th>\n                            <th>Description</th>\n                        </tr>\n                    </thead>\n                    <tbody>\n                        <tr>\n                            <td>name</td>\n                            <td>string</td>\n                            <td>null</td>\n                            <td>Name of the request parameter to identify the files at backend.</td>\n                        </tr>\n                        <tr>\n                            <td>url</td>\n                            <td>string</td>\n                            <td>null</td>\n                            <td>Remote url to upload the files.</td>\n                        </tr>\n                        <tr>\n                            <td>method</td>\n                            <td>string</td>\n                            <td>POST</td>\n                            <td>HTTP method to send the files to the url.</td>\n                        </tr>\n                        <tr>\n                            <td>multiple</td>\n                            <td>boolean</td>\n                            <td>false</td>\n                            <td>Used to select multiple files at once from file dialog.</td>\n                        </tr>\n                        <tr>\n                            <td>accept</td>\n                            <td>string</td>\n                            <td>false</td>\n                            <td>Pattern to restrict the allowed file types such as \"image/*\".</td>\n                        </tr>\n                        <tr>\n                            <td>disabled</td>\n                            <td>boolean</td>\n                            <td>false</td>\n                            <td>Disables the upload functionality.</td>\n                        </tr>\n                        <tr>\n                            <td>auto</td>\n                            <td>boolean</td>\n                            <td>false</td>\n                            <td>When enabled, upload begins automatically after selection is completed.</td>\n                        </tr>\n                        <tr>\n                            <td>maxFileSize</td>\n                            <td>number</td>\n                            <td>null</td>\n                            <td>Maximum file size allowed in bytes.</td>\n                        </tr>\n                        <tr>\n                            <td>fileLimit</td>\n                            <td>number</td>\n                            <td>null</td>\n                            <td>Maximum number of files that can be uploaded.</td>\n                        </tr>\n                        <tr>\n                            <td>invalidFileSizeMessageSummary</td>\n                            <td>string</td>\n                            <td>\"&#123;0&#125;: Invalid file size, \"</td>\n                            <td>Summary message of the invalid file size.</td>\n                        </tr>\n                        <tr>\n                            <td>invalidFileSizeMessageDetail</td>\n                            <td>string</td>\n                            <td>\"maximum upload size is &#123;0&#125;.\"</td>\n                            <td>Detail message of the invalid file size.</td>\n                        </tr>\n                        <tr>\n                            <td>invalidFileTypeMessageSummary</td>\n                            <td>string</td>\n                            <td>\"&#123;0&#125;: Invalid file type, \"</td>\n                            <td>Summary message of the invalid file type.</td>\n                        </tr>\n                        <tr>\n                            <td>invalidFileLimitMessageDetail</td>\n                            <td>string</td>\n                            <td>\"limit is &#123;0&#125; at most.\"</td>\n                            <td>Detail message of the invalid file type.</td>\n                        </tr>\n                        <tr>\n                            <td>invalidFileLimitMessageSummary</td>\n                            <td>string</td>\n                            <td>\"Maximum number of files exceeded, \"</td>\n                            <td>Summary message of the invalid file type.</td>\n                        </tr>\n                        <tr>\n                            <td>invalidFileTypeMessageDetail</td>\n                            <td>string</td>\n                            <td>\"allowed file types: &#123;0&#125;.\"</td>\n                            <td>Detail message of the invalid file type.</td>\n                        </tr>\n                        <tr>\n                            <td>style</td>\n                            <td>string</td>\n                            <td>null</td>\n                            <td>Inline style of the component.</td>\n                        </tr>\n                        <tr>\n                            <td>styleClass</td>\n                            <td>string</td>\n                            <td>null</td>\n                            <td>Style class of the component.</td>\n                        </tr>\n                        <tr>\n                            <td>previewWidth</td>\n                            <td>number</td>\n                            <td>50</td>\n                            <td>Width of the image thumbnail in pixels.</td>\n                        </tr>\n                        <tr>\n                            <td>chooseLabel</td>\n                            <td>string</td>\n                            <td>Choose</td>\n                            <td>Label of the choose button.</td>\n                        </tr>\n                        <tr>\n                            <td>uploadLabel</td>\n                            <td>string</td>\n                            <td>Upload</td>\n                            <td>Label of the upload button.</td>\n                        </tr>\n                        <tr>\n                            <td>cancelLabel</td>\n                            <td>string</td>\n                            <td>Cancel</td>\n                            <td>Label of the cancel button.</td>\n                        </tr>\n                        <tr>\n                            <td>chooseIcon</td>\n                            <td>string</td>\n                            <td>pi pi-plus</td>\n                            <td>Icon of the choose button.</td>\n                        </tr>\n                        <tr>\n                            <td>uploadIcon</td>\n                            <td>string</td>\n                            <td>pi pi-upload</td>\n                            <td>Icon of the upload button.</td>\n                        </tr>\n                        <tr>\n                            <td>cancelIcon</td>\n                            <td>string</td>\n                            <td>pi pi-times</td>\n                            <td>Icon of the cancel button.</td>\n                        </tr>\n                        <tr>\n                            <td>withCredentials</td>\n                            <td>boolean</td>\n                            <td>false</td>\n                            <td>Cross-site Access-Control requests should be made using credentials such as cookies, authorization headers or TLS client certificates.</td>\n                        </tr>\n                        <tr>\n                            <td>mode</td>\n                            <td>string</td>\n                            <td>advanced</td>\n                            <td>Defines the UI of the component, possible values are \"advanced\" and \"basic\".</td>\n                        </tr>\n                        <tr>\n                            <td>customUpload</td>\n                            <td>boolean</td>\n                            <td>false</td>\n                            <td>Whether to use the default upload or a manual implementation defined in uploadHandler callback.</td>\n                        </tr>\n                      <tr>\n                            <td>showUploadButton</td>\n                            <td>boolean</td>\n                            <td>true</td>\n                            <td>Defines the visibility of upload button for Client-side FileUpload.</td>\n                        </tr>\n                        <tr>\n                            <td>showCancelButton</td>\n                            <td>boolean</td>\n                            <td>true</td>\n                            <td>Defines the visibility of cancel button for Client-side FileUpload.</td>\n                        </tr>\n                        <tr>\n                            <td>files</td>\n                            <td>array</td>\n                            <td>null</td>\n                            <td>List of files to be provide to the FileUpload externally.</td>\n                        </tr>\n                        <tr>\n                            <td>headers</td>\n                            <td>HttpHeaders</td>\n                            <td>null</td>\n                            <td>HttpHeaders class represents the header configuration options for an HTTP request.</td>\n                        </tr>\n                    </tbody>\n                </table>\n            </div>\n\n            <h3>Events</h3>\n            <div class=\"doc-tablewrapper\">\n                <table class=\"doc-table\">\n                    <thead>\n                        <tr>\n                            <th>Name</th>\n                            <th>Parameters</th>\n                            <th>Description</th>\n                        </tr>\n                    </thead>\n                    <tbody>\n                        <tr>\n                            <td>onBeforeUpload</td>\n                            <td>event.formData: FormData object.</td>\n                            <td>Callback to invoke before file upload is initialized.</td>\n                        </tr>\n                        <tr>\n                            <td>onSend</td>\n                            <td>event.originalEvent: Http Event <br>\n                                event.formData: FormData object.</td>\n                            <td>An event indicating that the request was sent to the server. Useful when a request may be retried multiple times, to distinguish between retries on the final event stream.</td>\n                        </tr>\n                        <tr>\n                            <td>onUpload</td>\n                            <td>event.originalEvent: Http Event<br />\n                                event.files: Uploaded files.</td>\n                            <td>Callback to invoke when file upload is complete.</td>\n                        </tr>\n                        <tr>\n                            <td>onError</td>\n                            <td>event.files: Files that are not uploaded.<br />\n                                event.error: Request Error.</td>\n                            <td>Callback to invoke if file upload fails.</td>\n                        </tr>\n                        <tr>\n                            <td>onClear</td>\n                            <td>-</td>\n                            <td>Callback to invoke when files in queue are removed without uploading using clear all button.</td>\n                        </tr>\n                        <tr>\n                            <td>onRemove</td>\n                            <td>event.originalEvent: Original browser event. <br />\n                                event.file: Selected file.</td>\n                            <td>Callback to invoke when a file is removed without uploading using clear button of a file.</td>\n                        </tr>\n                        <tr>\n                            <td>onSelect</td>\n                            <td>event.originalEvent: Original browser event. <br />\n                                event.files: Selected files of the select event.\n                                event.currentFiles: All files to be uploaded.</td>\n                            <td>Callback to invoke when files are selected.</td>\n                        </tr>\n                        <tr>\n                            <td>onProgress</td>\n                            <td>event.originalEvent: Original browser event. <br />\n                                event.progress: Calculated progress value.</td>\n                            <td>Callback to invoke when files are being uploaded.</td>\n                        </tr>\n                        <tr>\n                            <td>uploadHandler</td>\n                            <td>event.files: List of selected files.</td>\n                            <td>Callback to invoke in custom upload mode to upload the files manually.</td>\n                        </tr>\n                    </tbody>\n                </table>\n            </div>\n\n            <h3>Methods</h3>\n            <div class=\"doc-tablewrapper\">\n                <table class=\"doc-table\">\n                    <thead>\n                        <tr>\n                            <th>Name</th>\n                            <th>Parameters</th>\n                            <th>Description</th>\n                        </tr>\n                    </thead>\n                    <tbody>\n                        <tr>\n                            <td>upload</td>\n                            <td>-</td>\n                            <td>Uploads the selected files.</td>\n                        </tr>\n                        <tr>\n                            <td>clear</td>\n                            <td>-</td>\n                            <td>Clears the files list.</td>\n                        </tr>\n                    </tbody>\n                </table>\n            </div>\n\n            <h3>Styling</h3>\n            <p>Following is the list of structural style classes, for theming classes visit <a href=\"#\" [routerLink]=\"['/theming']\">theming page</a>.</p>\n            <div class=\"doc-tablewrapper\">\n                <table class=\"doc-table\">\n                    <thead>\n                        <tr>\n                            <th>Name</th>\n                            <th>Element</th>\n                        </tr>\n                    </thead>\n                    <tbody>\n                        <tr>\n                            <td>ui-fileupload</td>\n                            <td>Container element</td>\n                        </tr>\n                        <tr>\n                            <td>ui-fileupload-buttonbar</td>\n                            <td>Header containing the buttons</td>\n                        </tr>\n                        <tr>\n                            <td>ui-fileupload-content</td>\n                            <td>Content section</td>\n                        </tr>\n                    </tbody>\n                </table>\n            </div>\n\n            <h3>Dependencies</h3>\n            <p>None.</p>\n        </p-tabPanel>\n\n        <p-tabPanel header=\"Source\">\n            <a href=\"https://github.com/primefaces/primeng/tree/master/src/app/showcase/components/fileupload\" class=\"btn-viewsource\" target=\"_blank\">\n                <span>View on GitHub</span>\n            </a>\n<pre>\n<code class=\"language-markup\" pCode ngNonBindable>\n&lt;p-toast [style]=\"&#123;marginTop: '80px'&#125;\"&gt;&lt;/p-toast&gt;\n\n&lt;h3 class=\"first\"&gt;Advanced&lt;/h3&gt;\n&lt;p-fileUpload name=\"demo[]\" url=\"./upload.php\" (onUpload)=\"onUpload($event)\"\n        multiple=\"multiple\" accept=\"image/*\" maxFileSize=\"1000000\"&gt;\n    &lt;ng-template pTemplate=\"content\"&gt;\n        &lt;ul *ngIf=\"uploadedFiles.length\"&gt;\n            &lt;li *ngFor=\"let file of uploadedFiles\"&gt;&#123;&#123;file.name&#125;&#125; - &#123;&#123;file.size&#125;&#125; bytes&lt;/li&gt;\n        &lt;/ul&gt;\n    &lt;/ng-template&gt;\n&lt;/p-fileUpload&gt;\n\n&lt;h3&gt;Basic&lt;/h3&gt;\n&lt;p-fileUpload mode=\"basic\" name=\"demo[]\" url=\"./upload.php\" accept=\"image/*\" maxFileSize=\"1000000\" (onUpload)=\"onBasicUpload($event)\"&gt;&lt;/p-fileUpload&gt;\n\n&lt;h3&gt;Basic with Auto&lt;/h3&gt;\n&lt;p-fileUpload #fubauto mode=\"basic\" name=\"demo[]\" url=\"./upload.php\" accept=\"image/*\" maxFileSize=\"1000000\" (onUpload)=\"onBasicUploadAuto($event)\" [auto]=\"true\" chooseLabel=\"Browse\"&gt;&lt;/p-fileUpload&gt;\n</code>\n</pre>\n\n<pre>\n<code class=\"language-typescript\" pCode ngNonBindable>\nexport class FileUploadDemo &#123;\n\n    uploadedFiles: any[] = [];\n\n    constructor(private messageService: MessageService) &#123;&#125;\n\n    onUpload(event) &#123;\n        for(let file of event.files) &#123;\n            this.uploadedFiles.push(file);\n        &#125;\n\n        this.messageService.add(&#123;severity: 'info', summary: 'File Uploaded', detail: ''&#125;);\n    &#125;\n&#125;\n</code>\n</pre>\n        </p-tabPanel>\n    </p-tabView>\n</div>\n";
+    /***/
+  },
+
+  /***/
+  "./src/app/showcase/components/fileupload/fileuploaddemo-routing.module.ts":
+  /*!*********************************************************************************!*\
+    !*** ./src/app/showcase/components/fileupload/fileuploaddemo-routing.module.ts ***!
+    \*********************************************************************************/
+
+  /*! exports provided: FileUploadDemoRoutingModule */
+
+  /***/
+  function _src_app_showcase_components_fileupload_fileuploaddemoRoutingModuleTs(module, __webpack_exports__, __webpack_require__) {
+    "use strict";
+
+    __webpack_require__.r(__webpack_exports__);
+    /* harmony export (binding) */
+
+
+    __webpack_require__.d(__webpack_exports__, "FileUploadDemoRoutingModule", function () {
+      return FileUploadDemoRoutingModule;
+    });
+    /* harmony import */
+
+
+    var tslib__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(
+    /*! tslib */
+    "./node_modules/tslib/tslib.es6.js");
+    /* harmony import */
+
+
+    var _angular_core__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(
+    /*! @angular/core */
+    "./node_modules/@angular/core/fesm2015/core.js");
+    /* harmony import */
+
+
+    var _angular_router__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(
+    /*! @angular/router */
+    "./node_modules/@angular/router/fesm2015/router.js");
+    /* harmony import */
+
+
+    var _fileuploaddemo__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(
+    /*! ./fileuploaddemo */
+    "./src/app/showcase/components/fileupload/fileuploaddemo.ts");
+
+    var FileUploadDemoRoutingModule = /*#__PURE__*/_createClass(function FileUploadDemoRoutingModule() {
+      _classCallCheck(this, FileUploadDemoRoutingModule);
+    });
+
+    FileUploadDemoRoutingModule = Object(tslib__WEBPACK_IMPORTED_MODULE_0__["__decorate"])([Object(_angular_core__WEBPACK_IMPORTED_MODULE_1__["NgModule"])({
+      imports: [_angular_router__WEBPACK_IMPORTED_MODULE_2__["RouterModule"].forChild([{
+        path: '',
+        component: _fileuploaddemo__WEBPACK_IMPORTED_MODULE_3__["FileUploadDemo"]
+      }])],
+      exports: [_angular_router__WEBPACK_IMPORTED_MODULE_2__["RouterModule"]]
+    })], FileUploadDemoRoutingModule);
+    /***/
+  },
+
+  /***/
+  "./src/app/showcase/components/fileupload/fileuploaddemo.module.ts":
+  /*!*************************************************************************!*\
+    !*** ./src/app/showcase/components/fileupload/fileuploaddemo.module.ts ***!
+    \*************************************************************************/
+
+  /*! exports provided: FileUploadDemoModule */
+
+  /***/
+  function _src_app_showcase_components_fileupload_fileuploaddemoModuleTs(module, __webpack_exports__, __webpack_require__) {
+    "use strict";
+
+    __webpack_require__.r(__webpack_exports__);
+    /* harmony export (binding) */
+
+
+    __webpack_require__.d(__webpack_exports__, "FileUploadDemoModule", function () {
+      return FileUploadDemoModule;
+    });
+    /* harmony import */
+
+
+    var tslib__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(
+    /*! tslib */
+    "./node_modules/tslib/tslib.es6.js");
+    /* harmony import */
+
+
+    var _angular_core__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(
+    /*! @angular/core */
+    "./node_modules/@angular/core/fesm2015/core.js");
+    /* harmony import */
+
+
+    var _angular_common__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(
+    /*! @angular/common */
+    "./node_modules/@angular/common/fesm2015/common.js");
+    /* harmony import */
+
+
+    var _fileuploaddemo__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(
+    /*! ./fileuploaddemo */
+    "./src/app/showcase/components/fileupload/fileuploaddemo.ts");
+    /* harmony import */
+
+
+    var _fileuploaddemo_routing_module__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(
+    /*! ./fileuploaddemo-routing.module */
+    "./src/app/showcase/components/fileupload/fileuploaddemo-routing.module.ts");
+    /* harmony import */
+
+
+    var primeng_fileupload__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(
+    /*! primeng/fileupload */
+    "./src/app/components/fileupload/public_api.ts");
+    /* harmony import */
+
+
+    var primeng_toast__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(
+    /*! primeng/toast */
+    "./src/app/components/toast/public_api.ts");
+    /* harmony import */
+
+
+    var primeng_button__WEBPACK_IMPORTED_MODULE_7__ = __webpack_require__(
+    /*! primeng/button */
+    "./src/app/components/button/public_api.ts");
+    /* harmony import */
+
+
+    var primeng_tabview__WEBPACK_IMPORTED_MODULE_8__ = __webpack_require__(
+    /*! primeng/tabview */
+    "./src/app/components/tabview/public_api.ts");
+    /* harmony import */
+
+
+    var primeng_codehighlighter__WEBPACK_IMPORTED_MODULE_9__ = __webpack_require__(
+    /*! primeng/codehighlighter */
+    "./src/app/components/codehighlighter/public_api.ts");
+
+    var FileUploadDemoModule = /*#__PURE__*/_createClass(function FileUploadDemoModule() {
+      _classCallCheck(this, FileUploadDemoModule);
+    });
+
+    FileUploadDemoModule = Object(tslib__WEBPACK_IMPORTED_MODULE_0__["__decorate"])([Object(_angular_core__WEBPACK_IMPORTED_MODULE_1__["NgModule"])({
+      imports: [_angular_common__WEBPACK_IMPORTED_MODULE_2__["CommonModule"], _fileuploaddemo_routing_module__WEBPACK_IMPORTED_MODULE_4__["FileUploadDemoRoutingModule"], primeng_fileupload__WEBPACK_IMPORTED_MODULE_5__["FileUploadModule"], primeng_toast__WEBPACK_IMPORTED_MODULE_6__["ToastModule"], primeng_button__WEBPACK_IMPORTED_MODULE_7__["ButtonModule"], primeng_tabview__WEBPACK_IMPORTED_MODULE_8__["TabViewModule"], primeng_codehighlighter__WEBPACK_IMPORTED_MODULE_9__["CodeHighlighterModule"]],
+      declarations: [_fileuploaddemo__WEBPACK_IMPORTED_MODULE_3__["FileUploadDemo"]]
+    })], FileUploadDemoModule);
+    /***/
+  },
+
+  /***/
+  "./src/app/showcase/components/fileupload/fileuploaddemo.ts":
+  /*!******************************************************************!*\
+    !*** ./src/app/showcase/components/fileupload/fileuploaddemo.ts ***!
+    \******************************************************************/
+
+  /*! exports provided: FileUploadDemo */
+
+  /***/
+  function _src_app_showcase_components_fileupload_fileuploaddemoTs(module, __webpack_exports__, __webpack_require__) {
+    "use strict";
+
+    __webpack_require__.r(__webpack_exports__);
+    /* harmony export (binding) */
+
+
+    __webpack_require__.d(__webpack_exports__, "FileUploadDemo", function () {
+      return FileUploadDemo;
+    });
+    /* harmony import */
+
+
+    var tslib__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(
+    /*! tslib */
+    "./node_modules/tslib/tslib.es6.js");
+    /* harmony import */
+
+
+    var _angular_core__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(
+    /*! @angular/core */
+    "./node_modules/@angular/core/fesm2015/core.js");
+    /* harmony import */
+
+
+    var primeng_api__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(
+    /*! primeng/api */
+    "./src/app/components/api/public_api.ts");
+
+    var FileUploadDemo = /*#__PURE__*/function () {
+      function FileUploadDemo(messageService) {
+        _classCallCheck(this, FileUploadDemo);
+
+        this.messageService = messageService;
+        this.uploadedFiles = [];
+      }
+
+      return _createClass(FileUploadDemo, [{
+        key: "onUpload",
+        value: function onUpload(event) {
+          var _iterator = _createForOfIteratorHelper(event.files),
+              _step;
+
+          try {
+            for (_iterator.s(); !(_step = _iterator.n()).done;) {
+              var file = _step.value;
+              this.uploadedFiles.push(file);
+            }
+          } catch (err) {
+            _iterator.e(err);
+          } finally {
+            _iterator.f();
+          }
+
+          this.messageService.add({
+            severity: 'info',
+            summary: 'Success',
+            detail: 'File Uploaded'
+          });
+        }
+      }, {
+        key: "onBasicUpload",
+        value: function onBasicUpload(event) {
+          this.messageService.add({
+            severity: 'info',
+            summary: 'Success',
+            detail: 'File Uploaded with Basic Mode'
+          });
+        }
+      }, {
+        key: "onBasicUploadAuto",
+        value: function onBasicUploadAuto(event) {
+          this.messageService.add({
+            severity: 'info',
+            summary: 'Success',
+            detail: 'File Uploaded with Auto Mode'
+          });
+        }
+      }]);
+    }();
+
+    FileUploadDemo.ctorParameters = function () {
+      return [{
+        type: primeng_api__WEBPACK_IMPORTED_MODULE_2__["MessageService"]
+      }];
+    };
+
+    FileUploadDemo = Object(tslib__WEBPACK_IMPORTED_MODULE_0__["__decorate"])([Object(_angular_core__WEBPACK_IMPORTED_MODULE_1__["Component"])({
+      template: Object(tslib__WEBPACK_IMPORTED_MODULE_0__["__importDefault"])(__webpack_require__(
+      /*! raw-loader!./fileuploaddemo.html */
+      "./node_modules/raw-loader/dist/cjs.js!./src/app/showcase/components/fileupload/fileuploaddemo.html"))["default"],
+      providers: [primeng_api__WEBPACK_IMPORTED_MODULE_2__["MessageService"]]
+    }), Object(tslib__WEBPACK_IMPORTED_MODULE_0__["__metadata"])("design:paramtypes", [primeng_api__WEBPACK_IMPORTED_MODULE_2__["MessageService"]])], FileUploadDemo);
+    /***/
+  }
+}]);
+//# sourceMappingURL=components-fileupload-fileuploaddemo-module-es5.js.map
